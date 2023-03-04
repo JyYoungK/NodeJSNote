@@ -27,7 +27,7 @@ export default function App() {
               setCurrentPage(currentPage + 1);
             }}
           >
-            useCallback vs UseMemo
+            NodeJS Project
           </button>
         )}
         {currentPage === 2 && (
@@ -36,7 +36,7 @@ export default function App() {
               className="mx-2 rounded-md bg-red-400 p-3 text-md"
               onClick={() => setCurrentPage(currentPage - 1)}
             >
-              useState vs UseRef
+              NodeJS Note
             </button>
           </div>
         )}

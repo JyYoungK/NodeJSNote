@@ -3,141 +3,121 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 function useStateVSRef() {
-  const [useStateValue, setStateValue] = useState("");
-  const [prevStateValue, setStatePrevValue] = useState("");
-
-  useEffect(() => {
-    console.log("useStateValue: " + useStateValue);
-    console.log("prevStateValue: " + prevStateValue);
-    setStatePrevValue(useStateValue);
-  }, [useStateValue]);
-
-  const [useRefValue, setUseRefValue] = useState("");
-  const prevUseRefValue = useRef("");
-
-  useEffect(() => {
-    console.log("useRefValue: " + useRefValue);
-    console.log("prevUseRefValue: " + prevUseRefValue.current);
-    prevUseRefValue.current = useRefValue;
-  }, [useRefValue]);
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">useState vs useRef</h1>
+      <h1 className="text-4xl font-bold mb-4">Fullstack Project</h1>
       <div>
-        One of the most effective uses of useRef is to store the previous value
-        of useState, since using useRef does not trigger a re-render. If you
-        attempt to use useState to set the previous value instead, it will cause
-        your component to re-render unnecessarily. However, by using useRef in
-        this case, we can avoid this additional re-render that is not actually
-        needed.
+        We will build a web application where our server will live on a url and
+        when a user makes a request to this url in the browser, the server will
+        respond with some html.
       </div>
-
-      <h2 className="mt-5">For example, let's try to save a previous state</h2>
-      <h2 className="text-2xl my-3 font-bold">Using useState </h2>
-      <SyntaxHighlighter language="javascript" style={nord}>
-        {`  const [useStateValue, setStateValue] = useState("");
-    const [prevStateValue, setStatePrevValue] = useState("");
-  
-    useEffect(() => {
-      console.log("useStateValue: " + useStateValue);
-      console.log("prevStateValue: " + prevStateValue);
-      setStatePrevValue(useStateValue);
-    }, [useStateValue]);
-    
-    return (
-      <input
-      value={useRefvalue}
-      onChange={(e) => setUseRefValue(e.target.value)}
-    />
-    <div>
-      This is the value used by useState: {useStateValue}
-    </div>
-    <div>
-      This is the previous value using useState: {prevStateValue}
-    </div>
-  </div>
-    )`}
-      </SyntaxHighlighter>
-
-      <div className="my-8">
-        <input
-          className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={useStateValue}
-          placeholder="Type something to display"
-          onChange={(e) => setStateValue(e.target.value)}
-        />
-        <div className="text-xl text-blue-600 mb-2">
-          This is the current value using useState: {useStateValue}
-        </div>
-        <div className="text-xl text-green-600 mb-2">
-          This is the previous value using useState: {prevStateValue}
-        </div>
-
-        <div className="text-gray-700">
-          If you open the browser's developer tools and inspect the page, you
-          can see that prevStateValue correctly logs the previous state of
-          useStateValue. However, on the actual page, the displayed value
-          remains the same. This is because the component is{" "}
-          <span className="underline font-bold">re-rendered</span>!
-        </div>
-      </div>
-
-      <h2 className="text-2xl my-3 font-bold"> Using useRef </h2>
-      <SyntaxHighlighter language="javascript" style={nord}>
-        {`  const [useRefValue, setUseRefValue] = useState("");
-    const prevUseRefValue = useRef("");
-  
-    useEffect(() => {
-      console.log("useRefValue: " + useRefValue);
-      console.log("prevUseRefValue: " + prevUseRefValue.current);
-      prevUseRefValue.current = useRefValue;
-    }, [useRefValue]);
-    
-    return (
-      <input
-      value={useRefvalue}
-      onChange={(e) => setUseRefValue(e.target.value)}
-    />
-    <div>
-      This is the value used by useState: {useRefValue}
-    </div>
-    <div>
-      This is the previous value using useRef: {prevUseRefValue.current}
-    </div>
-  </div>
-    )`}
-      </SyntaxHighlighter>
-
-      <div className="my-8">
-        <input
-          className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Type something to display"
-          value={useRefValue}
-          onChange={(e) => setUseRefValue(e.target.value)}
-        />
-        <div className="text-xl text-blue-600 mb-2">
-          This is setValue used by useState: {useRefValue}
-        </div>
-        <div className="text-xl text-green-600 mb-2">
-          This is the previous value using useState: {prevUseRefValue.current}
-        </div>
-
-        <div className="text-gray-700">
-          If you open the browser's developer tools and inspect the page, you
-          can see that prevStateValue correctly logs the previous state of
-          useStateValue <span className="font-bold"> AND </span> on the actual
-          page, the displayed value matches. This is because the component is{" "}
-          <span className="underline font-bold">NOT</span> re-rendered!
-        </div>
-      </div>
-
-      <h2 className="text-2xl my-3 font-bold"> Conclusion</h2>
       <div>
-        If you want to update data and cause a UI update, useState is your Hook.
-        If you need some kind of data container throughout the component’s
-        lifecycle without causing render cycles on mutating your variable, then
-        useRef is your solution.
+        In our code, we'll first create an instance of express app. An express
+        app allows us to create different urls and endpoints that a user can
+        navigate to in the browser. And then when we define code for the server
+        to handle those requests.
+      </div>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`const express = require('express');
+const app = express()        `}
+      </SyntaxHighlighter>
+      <div>
+        When a user navigates to a url in the browser, it's what's known as a
+        get request. Which mean's they're requesting some data on the server and
+        not trying to modify or update anything on the server.
+      </div>
+      <div>
+        With express, we can set up an endpoint like that by calling app.get()
+        and then the first argument is the url that the user will navigate to.
+      </div>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`app.get('/foo/bar')`}
+      </SyntaxHighlighter>
+      <div>
+        {" "}
+        You can create multiple pages for your web app by creating different
+        urls
+      </div>
+      <div>
+        The second argument here is our callback function. You can think of
+        every request to this url as an event and you handle that event with
+        this function. Express gives us two parameters to make use of the
+        request and response.
+      </div>
+      <div>Request is the incoming data from the user.</div>
+      <div>
+        {" "}
+        To read some html from our file system and then send it back down to the
+        browser
+      </div>
+      <h2 className="text-2xl mt-5"> Read from HTML File</h2>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`app.get('/', (request, response) => {
+      readFile('./home.html', 'utf8', (err, html) => {
+        if (err) {
+          response.status(500).send("Sorry out of order")
+        }
+        response.send(html)
+      })
+})`}
+      </SyntaxHighlighter>
+      <div>
+        We'll read the file, use utf-8 encoding, then in our callback function,
+        we will have access to the html string and we can send a response back
+        down to the client by calling response.send
+      </div>
+      <div>
+        {" "}
+        And also, if there's an error in the callback, we can handle that by
+        sending a response with a status code of 500, which means a server
+        error, so the user knows that something went wrong on the server.
+      </div>
+      <div>We now have a way to send html from the server to the client</div>
+      <div>
+        {" "}
+        Now we need express to start listening to incoming requests. We do that
+        by defining a port, which will normally come from a node environment
+        variable. Then we call app.listen with that port, and when it starts up,
+        we'll console.log that the app is available on localhost 3000.
+      </div>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`app.listen(process.env.PORT || 3000, () => console.log("App available on port 3000"))`}
+      </SyntaxHighlighter>
+      <div>
+        Now if you go ahead and open it in the browser, you should see your html
+        returned back to you.
+      </div>
+      <h2 className="text-2xl mt-5"> Important</h2>
+      <div>
+        Callbacks can be very difficult to work with as your app grows in
+        complexity. It often leads to a state known as callback hell, where you
+        have a bunch of callbacks nested within callbacks within more callbacks
+        and so on. A great way to avoid code like this is to use promises
+        instead of callbacks.
+      </div>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`const {readFile} = require('fs').promises;`}
+      </SyntaxHighlighter>
+      <SyntaxHighlighter language="javascript" style={nord}>
+        {`app.get('/', async (request, response) => {
+      response.send(await readFile('./home.html', 'utf8'))
+})`}
+      </SyntaxHighlighter>
+      <div>
+        {" "}
+        You make callback function async and then we can write the response in a
+        single line of code by saying response send and then await the operation
+        to read file. This way, it's much more concise and readable but it's
+        especially useful when you have multiple async operations to handle in a
+        single request.
+      </div>
+      <h2 className="text-2xl mt-5"> Deploy?</h2>
+      <div>
+        {" "}
+        There are many ways to do it but standard and best way is to use Google
+        engine app, what has known as a standard environment for Node.JS up to
+        version 12. And what that does is provide you with a server in the cloud
+        that scales automatically based on incoming traffic to your app.
       </div>
     </div>
   );
