@@ -5,6 +5,8 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 function basicNodeJS() {
+  const { readFile, readFileSync } = require("fs");
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">NodeJS</h1>
@@ -67,6 +69,14 @@ eventEmitter.emit('lunch')
       </div>
 
       <h2 className="text-2xl mt-5">File System</h2>
+      <div className="mt-5">
+        A built-in file system module 'fs' it can read, write, and delete files
+        on the file system among other things and it can also do things in a
+        blocking or non-blocking way
+      </div>
+      <div className="mt-5">
+        Anytime you see a function that ends in sync, think
+      </div>
     </div>
   );
 }
