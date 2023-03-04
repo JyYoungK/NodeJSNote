@@ -173,7 +173,7 @@ math: '',
 english: ''`}
       </SyntaxHighlighter>
       <div className="mt-5">
-        This code is not available to use in any other file but if you wish to
+        This code is now available to use in any other file but if you wish to
         use someone else's code, and a primary place to do that is a via node
         package manage or npm which was acquired by github, which was acquired
         by microsoft.{" "}
