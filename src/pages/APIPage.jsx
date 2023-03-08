@@ -10,14 +10,18 @@ function APIPage() {
       </h1>
       <h2 className="text-2xl mt-5">SPA vs MPA</h2>
       <div className="mt-5">
-        One scenario where React Router can be useful is when you have a SPA
-        that needs to communicate with a server API. React Router can handle the
-        client-side routing for your app, while the server-side code handles the
-        data fetching and processing. For example, let's say you're building an
-        e-commerce website with React. You want to have a product page where
-        users can view details about a particular product. You also want to have
-        a shopping cart page where users can see the items they've added to
-        their cart.
+        Single-Page Applications (SPAs) offer a faster and more responsive user
+        experience, but can be less SEO(Search Engine Optimization)-friendly and
+        have potential security issues, while Multi-Page Applications (MPAs)
+        offer better SEO, security, and accessibility, but may have slower
+        initial load times and a less dynamic user experience.
+      </div>
+      <h2 className="text-2xl mt-5">Server vs Serverless</h2>
+      <div className="mt-5">
+        Server-based architectures offer more control and customization, but
+        require more maintenance and can be less scalable, while serverless
+        architectures offer easier scalability and reduced maintenance, but may
+        be less customizable and have higher latency.
       </div>
       <h2 className="text-2xl mt-5">Real DOM vs Virtual DOM</h2>
       <div className="mt-5">
