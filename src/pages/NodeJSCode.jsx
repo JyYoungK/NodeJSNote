@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-function useStateVSRef() {
+function nodeJSCode() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">Fullstack Project</h1>
+      <h1 className="text-4xl font-bold mb-4">NodeJS Code</h1>
       <div>
         We will build a web application where our server will live on a url and
         when a user makes a request to this url in the browser, the server will
@@ -18,8 +18,8 @@ function useStateVSRef() {
         to handle those requests.
       </div>
       <SyntaxHighlighter language="javascript" style={nord}>
-        {`const express = require('express');
-const app = express()        `}
+        {`const express = require('express'); //creating a basic server 
+const app = express(); //initializing it        `}
       </SyntaxHighlighter>
       <div>
         When a user navigates to a url in the browser, it's what's known as a
@@ -123,4 +123,4 @@ const app = express()        `}
   );
 }
 
-export default useStateVSRef;
+export default nodeJSCode;
