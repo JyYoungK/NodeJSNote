@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
